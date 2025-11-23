@@ -10,66 +10,43 @@ interface HeroProps {
 export default function Hero({ onStartCall }: HeroProps) {
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-      </Head>
-      <section className="h-screen w-full flex flex-col justify-center items-center text-center bg-[#194D26] text-[#FBEEC8] relative overflow-hidden">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          className="font-extrabold text-7xl leading-tight z-10"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
-          Your Personal <br /> AI Barista
-        </motion.h1>
+      <header role="banner" className="relative w-full h-screen flex items-center justify-center px-4 overflow-hidden">
+        <Image
+          src="/dna.png"
+          alt=""
+          aria-hidden="true"
+          width={1400}
+          height={1400}
+          className="absolute -right-40 -top-40 md:-right-60 md:-top-60 w-[1400px] h-[1400px] opacity-10 md:opacity-20 pointer-events-none transform -rotate-45"
+        />
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="mt-4 text-3xl text-[#FBEEC8cc] z-10"
-      >
-        Order your perfect cup with the power of AI conversation.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        <div className="relative z-10 flex flex-col items-center gap-8 px-4 text-center">
+          <motion.h1
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
-        className="flex gap-4 mt-8 z-10"
-      >
-        <button 
+        transition={{ duration: 0.6 }}
+        className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tight text-gray-900"
+        style={{ fontFamily: "'Vend Sans', 'VendSans', sans-serif" }}
+        aria-label="Hero headline"
+          >
+        Revolutionizing{" "}
+        <span className="inline-block p-2 rounded-3xl text-white bg-black">healthcare</span>
+        <br />
+        with AI and psychology
+          </motion.h1>
+
+          <div className="w-full flex justify-center">
+        <button
+          type="button"
           onClick={onStartCall}
-          className="px-5 py-2 z-10 bg-[#F3E8C5] rounded-full text-[#194D26] font-semibold hover:scale-105 transition"
+          aria-label="Start call"
+          className="inline-flex items-center justify-center px-7 py-3 bg-black text-white text-lg font-semibold rounded-full shadow-md hover:bg-gray-900 active:translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-4 focus-visible:ring-black/20"
         >
-          Start Talking
+          Start Call
         </button>
-
-        <button className="px-5 py-2 z-10 border border-[#F3E8C5] rounded-full text-[#F3E8C5] font-semibold hover:bg-[#2d713d] transition">
-          View Menu
-        </button>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-[-5%] flex justify-center items-end w-full pointer-events-none"
-      >
-         <div className="relative z-0 w-100 h-100 translate-y-12 -rotate-12 opacity-80">
-            <Image src="/coffee.png" alt="Coffee Cup" fill className="object-contain" />
-         </div>
-         <div className="relative z-0 w-120 h-120">
-            <Image src="/coffee.png" alt="Coffee Cup" fill className="object-contain" />
-         </div>
-         <div className="relative w-100 h-100 translate-y-12 rotate-12 opacity-80">
-            <Image src="/coffee.png" alt="Coffee Cup" fill className="object-contain" />
-         </div>
-      </motion.div>
-    </section>
+          </div>
+        </div>
+      </header>
     </>
   );
 }
