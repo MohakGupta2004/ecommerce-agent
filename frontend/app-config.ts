@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Barista',
-  pageTitle: 'Barista',
-  pageDescription: 'A voice agent for supporting your customers with coffee orders.',
+  companyName: 'genomic',
+  pageTitle: 'Genomic - AI Healthcare Assistant',
+  pageDescription: 'An AI-powered healthcare assistant that leverages psychology to provide personalized support.',
 
   supportsChatInput: true,
   supportsVideoInput: true,

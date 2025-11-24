@@ -18,6 +18,17 @@
                 "sleep"
             ],
             "summary": "Mohawk reported feeling really happy with moderate energy and aims to sleep."
+        },
+        {
+            "timestamp": "2024-05-15T12:00:00Z",
+            "mood": "good",
+            "energy": "moderate",
+            "goals": [
+                "complete a DSA problem",
+                "go to college",
+                "submit more project"
+            ],
+            "summary": "Mohawk is feeling good with moderate energy and aims to complete a DSA problem, go to college, and submit a project."
         }
     ]
 }
