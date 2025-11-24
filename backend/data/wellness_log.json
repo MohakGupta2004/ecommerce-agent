@@ -1,34 +1,24 @@
 {
     "Mohawk": [
         {
-            "timestamp": "2024-05-13T12:00:00Z",
-            "mood": "a little low",
-            "energy": "doing good, not great, not bad",
-            "goals": [
-                "complete project",
-                "do a DSA question"
-            ],
-            "summary": "Mohawk reported feeling a little low with moderate energy and aims to complete a project and do a DSA question."
-        },
-        {
-            "timestamp": "2024-05-14T20:30:00Z",
-            "mood": "really happy",
-            "energy": "moderate",
-            "goals": [
-                "sleep"
-            ],
-            "summary": "Mohawk reported feeling really happy with moderate energy and aims to sleep."
-        },
-        {
-            "timestamp": "2024-05-15T12:00:00Z",
+            "timestamp": "2024-05-14T10:00:00Z",
             "mood": "good",
             "energy": "moderate",
             "goals": [
-                "complete a DSA problem",
-                "go to college",
-                "submit more project"
+                "complete Marf AI project",
+                "do some DSA"
             ],
-            "summary": "Mohawk is feeling good with moderate energy and aims to complete a DSA problem, go to college, and submit a project."
+            "summary": "Mohawk is feeling good with moderate energy and plans to work on their Marf AI project and DSA."
+        },
+        {
+            "timestamp": "2024-05-15T10:00:00Z",
+            "mood": "really good",
+            "energy": "moderate",
+            "goals": [
+                "do some cycling",
+                "go for gym"
+            ],
+            "summary": "Mohawk is feeling really good with moderate energy and plans to do some cycling and go to the gym."
         }
     ]
 }
