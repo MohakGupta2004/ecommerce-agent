@@ -12,7 +12,7 @@ export const WelcomeView = ({
   ref,
 }: React.ComponentProps<'div'> & WelcomeViewProps) => {
   return (
-    <div ref={ref} className='min-h-screen'>
+    <div ref={ref} className='h-screen overflow-hidden'>
       <Navbar/>
       <Hero onStartCall={onStartCall}/>
     </div>

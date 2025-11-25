@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'genomic',
-  pageTitle: 'Genomic - AI Healthcare Assistant',
-  pageDescription: 'An AI-powered healthcare assistant that leverages psychology to provide personalized support.',
+  companyName: 'Reelers.io',
+  pageTitle: 'Sales@reelers.io',
+  pageDescription: 'AI-Powered Sales Agent to Boost Your Sales',
 
   supportsChatInput: true,
   supportsVideoInput: true,

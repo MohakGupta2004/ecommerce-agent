@@ -1,4 +1,4 @@
-import { Public_Sans } from 'next/font/google';
+import { Public_Sans, Radley } from 'next/font/google';
 import localFont from 'next/font/local';
 import { headers } from 'next/headers';
 import { ApplyThemeScript, ThemeToggle } from '@/components/app/theme-toggle';
