@@ -42,7 +42,7 @@ export default function Hero({ onStartCall }: HeroProps) {
             className="text-[10rem] lg:text-[12rem] font-medium tracking-tight text-black leading-tight"
             style={{ fontFamily: "Radley, serif" }}
           >
-            Grow<sup className="text-4xl lg:text-5xl">+</sup>
+            Grow<sup className="text-8xl lg:text-8xl">+</sup>
           </h1>
           <div className="w-full h-1 bg-black mt-3"></div>
         </motion.div>
@@ -64,9 +64,6 @@ export default function Hero({ onStartCall }: HeroProps) {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex items-center gap-4"
         >
-          <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
-            <span className="text-xl">👤</span>
-          </div>
           <div className="flex items-center gap-6">
             <div>
               <p className="text-sm font-medium text-gray-400">Loved the performance</p>
@@ -141,11 +138,11 @@ export default function Hero({ onStartCall }: HeroProps) {
           >
             <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2">
               <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4 text-orange-500" />
-              <span className="text-xs lg:text-sm font-medium">How is the fit?</span>
+              <span className="text-xs lg:text-sm font-medium text-black">Want to know about investment?</span>
             </div>
-            <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2">
+            <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2 mr-7 lg:mr-8">
               <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4 text-blue-500" />
-              <span className="text-xs lg:text-sm font-medium">Do you like the design?</span>
+              <span className="text-xs lg:text-sm font-medium text-black">Like to collaborate?</span>
             </div>
           </motion.div>
 
@@ -154,38 +151,11 @@ export default function Hero({ onStartCall }: HeroProps) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="absolute -top-2 -right-2 lg:-top-4 lg:-right-4 bg-orange-400/90 backdrop-blur-sm p-3 lg:p-4 rounded-2xl shadow-xl"
+            className="absolute -top-2 -right-2 lg:-top-4 lg:-right-4 bg-white-900/90 border backdrop-blur-sm p-3 lg:p-4 rounded-2xl shadow-xl"
           >
             <p className="text-[10px] lg:text-xs text-white/80 mb-0.5 lg:mb-1">UP TO</p>
             <p className="text-3xl lg:text-4xl font-bold text-white mb-0.5 lg:mb-1">60%</p>
             <p className="text-[10px] lg:text-xs text-white">More sales this week</p>
-          </motion.div>
-
-          {/* Bottom Right - Product Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            className="absolute -bottom-2 -right-2 lg:-bottom-4 lg:-right-4 bg-white/95 backdrop-blur-sm p-3 lg:p-4 rounded-2xl shadow-xl flex items-center gap-2 lg:gap-3 min-w-60"
-          >
-            <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-100 rounded-xl overflow-hidden shrink-0">
-              <Image
-                src="/sales.jpg"
-                alt="Nike Shoes"
-                width={80}
-                height={80}
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-xs lg:text-sm font-semibold">Nike Shoes</p>
-              <p className="text-xs lg:text-sm text-gray-600">Jordan</p>
-              <p className="text-lg lg:text-xl font-bold">$849.99</p>
-              <div className="flex items-center gap-1 mt-0.5 lg:mt-1">
-                <Star className="w-3 h-3 fill-black" />
-                <span className="text-xs lg:text-sm font-medium">4.6</span>
-              </div>
-            </div>
           </motion.div>
         </motion.div>
       </div>

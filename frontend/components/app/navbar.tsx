@@ -19,7 +19,7 @@ export default function Navbar() {
           <div className="w-2 h-2 bg-white rounded-sm"></div>
         </div>
       </div>
-      <span className="text-black font-medium text-sm">/ Sales@reelers.io</span>
+      <span className="text-black font-medium text-sm">Zerodha Sales</span>
     </div>
     
     {/* Navigation Links */}

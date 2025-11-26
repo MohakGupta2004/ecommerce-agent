@@ -1,0 +1,33 @@
+{
+  "company": "Zerodha Broking Ltd",
+  "industry": "Fintech / Brokerage",
+  "headquarters": "Bengaluru, Karnataka, India",  
+  "founders": ["Nithin Kamath", "Nikhil Kamath"],  
+  "founded": "2010",  
+  "description": "Zerodha is India’s largest discount broker, offering online trading and investing in equities, derivatives, commodities, currency, mutual funds, and more. :contentReference[oaicite:0]{index=0}",  
+  "products": ["Kite (trading platform)", "Coin (mutual funds)", "Console (analytics)", "Varsity (education)"],  
+  "pricing": {
+    "equity_delivery_brokerage": "₹ 0 per order (no brokerage) :contentReference[oaicite:1]{index=1}",
+    "intraday_and_F&O": "Flat ₹ 20 per executed order or 0.03% (whichever is lower) :contentReference[oaicite:2]{index=2}",
+    "options": "Flat ₹ 20 per executed order :contentReference[oaicite:3]{index=3}",
+    "direct_mutual_funds": "₹ 0 (no commission) :contentReference[oaicite:4]{index=4}",
+    "account_opening": "₹ 200–₹ 300 (depending on type) :contentReference[oaicite:5]{index=5}",
+    "demat_annual_maintenance_charge": {
+      "up_to_₹4_lakh": "₹ 0 (Basic Services Demat Account, BSDA) :contentReference[oaicite:6]{index=6}",
+      "₹4–₹10 lakh": "₹ 100/year (charged quarterly) :contentReference[oaicite:7]{index=7}",
+      "above_₹10_lakh": "₹ 300/year (charged quarterly) :contentReference[oaicite:8]{index=8}"
+    },
+    "optional_services": {
+      "Tickertape Pro": "₹ 249/month or ₹ 2399/year :contentReference[oaicite:9]{index=9}",
+      "Kite Connect (API)": "₹ 500/month for connect plan, personal plan free :contentReference[oaicite:10]{index=10}"
+    }
+  },
+  "faq": {
+    "what_does_your_product_do": "Zerodha allows users in India to trade and invest in equities, derivatives, commodities, currencies, and mutual funds. :contentReference[oaicite:11]{index=11}",
+    "do_you_have_a_free_tier": "Yes — equity delivery trades have zero brokerage. Direct mutual funds are also free. :contentReference[oaicite:12]{index=12}",
+    "who_is_this_for": "Retail traders, investors, algorithmic traders, as well as more active traders doing intraday or F&O trades. Also useful for long-term investors. :contentReference[oaicite:13]{index=13}",
+    "how_do_you_charge_for_intraday": "Flat ₹ 20 per executed order or 0.03%, whichever is lower. :contentReference[oaicite:14]{index=14}",
+    "what_is_the_AMC": "Varies by holdings: up to ₹4 lakh — ₹0; ₹4–10 lakh — ₹100/year; above ₹10 lakh — ₹300/year. :contentReference[oaicite:15]{index=15}",
+    "how_do_i_open_an_account": "Zerodha supports online account opening; basic account charges depend on the type (₹ 200–₹ 300). :contentReference[oaicite:16]{index=16}"
+  }
+}

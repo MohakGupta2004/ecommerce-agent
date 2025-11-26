@@ -20,8 +20,8 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Reelers.io',
-  pageTitle: 'Sales@reelers.io',
+  companyName: 'Zerodha Sales',
+  pageTitle: 'Zerodha Sales - AI-Powered Sales Agent',
   pageDescription: 'AI-Powered Sales Agent to Boost Your Sales',
 
   supportsChatInput: true,
