@@ -1,51 +1,56 @@
 "use client";
-import Head from "next/head";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { Shield } from "lucide-react";
 
 export default function Navbar() {
   const navlinks = [
-    { name: "Product", href: "/product" },
-    { name: "Solutions", href: "/solutions" },
+    { name: "Home", href: "/" },
+    { name: "About us", href: "/about" },
+    { name: "User-guide", href: "/guide" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Developers", href: "/developers" }
-  ]
+  ];
+
   return (
-   <>
-   <div className="flex justify-between items-center px-6 py-4 bg-white border-b border-gray-200 mx-10 rounded-[2.5rem] mt-3">
-    {/* Logo and Brand */}
-    <div className="flex items-center gap-3">
-      <div className="w-8 h-8 bg-black rounded-md flex items-center justify-center">
-        <div className="w-5 h-5 rounded-sm border-2 border-white flex items-center justify-center">
-          <div className="w-2 h-2 bg-white rounded-sm"></div>
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto relative z-50"
+    >
+      {/* Logo */}
+      <div className="flex items-center gap-2">
+        <div className="relative">
+          <div className="absolute inset-0 bg-blue-500 blur-lg opacity-50"></div>
         </div>
+        <span className="text-white font-medium text-lg tracking-wide">NovaCox</span>
       </div>
-      <span className="text-black font-medium text-sm">Zerodha Sales</span>
-    </div>
-    
-    {/* Navigation Links */}
-    <nav className="hidden md:flex items-center gap-8">
-      {navlinks.map((link) => (
-        <a 
-          key={link.name} 
-          href={link.href} 
-          className="text-black text-sm font-medium hover:text-gray-600 transition-colors"
+
+      {/* Center Links */}
+      <div className="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 gap-8">
+        {navlinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="text-sm text-gray-300 hover:text-white transition-colors font-light"
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Right Actions */}
+      <div className="flex items-center gap-6">
+        <Link href="/signup" className="text-sm text-gray-300 hover:text-white transition-colors">
+          Sign up
+        </Link>
+        <Link
+          href="/login"
+          className="text-sm text-white border border-white/20 bg-white/5 px-5 py-2 rounded-full hover:bg-white/10 transition-colors"
         >
-          {link.name}
-        </a>
-      ))}
-    </nav>
-    
-    {/* Right Side Buttons */}
-    <div className="flex items-center gap-4">
-      <button className="text-black text-sm font-medium hover:text-gray-600 transition-colors">
-        Log in
-      </button>
-      <span className="w-px h-6 bg-gray-300"></span>
-      <button className="border-2 border-black text-black px-6 py-2.5 rounded-full text-sm font-medium hover:bg-black hover:text-white transition-colors">
-        Get it Now — It's Free
-      </button>
-    </div>
-   </div>
-   </> 
+          Login
+        </Link>
+      </div>
+    </motion.nav>
   );
 }

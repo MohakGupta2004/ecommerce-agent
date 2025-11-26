@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Zerodha Sales',
-  pageTitle: 'Zerodha Sales - AI-Powered Sales Agent',
-  pageDescription: 'AI-Powered Sales Agent to Boost Your Sales',
+  companyName: 'NovaCox',
+  pageTitle: 'NovaCox Fraud Detection Agent',
+  pageDescription: 'Connect with our AI-powered fraud detection assistant to verify unusual transactions quickly and securely.',
 
   supportsChatInput: true,
   supportsVideoInput: true,

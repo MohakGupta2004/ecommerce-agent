@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { ArrowRight, Star, CheckCircle2, Play } from "lucide-react";
+import { ArrowRight, Shield, Sparkles } from "lucide-react";
 
 interface HeroProps {
   onStartCall?: () => void;
@@ -9,154 +8,113 @@ interface HeroProps {
 
 export default function Hero({ onStartCall }: HeroProps) {
   return (
-    <div className="border mx-8 my-3 rounded-[2.5rem] bg-linear-to-b from-gray-300 to-gray-100 p-6 lg:p-10 flex flex-col lg:flex-row items-center lg:justify-between gap-8 relative overflow-hidden h-[calc(100vh-120px)]">
+    <div className="relative min-h-[calc(100vh-100px)] flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto px-6 py-12 lg:py-0">
+      
       {/* Left Content */}
-      <div className="flex-1 space-y-4 lg:space-y-6 z-10">
-        {/* Badge */}
+      <div className="flex-1 z-10 space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-3"
+          style={{ fontFamily: '"Orbitron", "Roboto Mono", monospace', letterSpacing: '0.06em' }}
         >
-          <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
-            <div className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
-              <div className="w-2 h-2 bg-white rounded-full"></div>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm font-bold">20M+ User</p>
-            <p className="text-sm text-gray-600">
-              Read Our <span className="underline font-semibold">Success Stories</span>
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <h1
-            className="text-[10rem] lg:text-[12rem] font-medium tracking-tight text-black leading-tight"
-            style={{ fontFamily: "Radley, serif" }}
-          >
-            Grow<sup className="text-8xl lg:text-8xl">+</sup>
+          <h1 className="text-5xl lg:text-7xl font-semibold text-white leading-[1.1] tracking-tight">
+            <span className="whitespace-nowrap">Report Your Fraud</span>
+            <br />
+            <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+              Against Fraudsters
+            </span>
           </h1>
-          <div className="w-full h-1 bg-black mt-3"></div>
         </motion.div>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-base lg:text-lg text-gray-700 max-w-md leading-relaxed"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-gray-400 text-lg max-w-xl leading-relaxed font-mono"
+          style={{ fontFamily: '"Orbitron", "Roboto Mono", monospace', letterSpacing: '0.02em' }}
         >
-          Drive Sales Growth, And Harness Ai-Powered User Content — Up To 50× Faster.
+          Report fraudulent activities with ease using our intuitive platform. Help us combat fraud and create a safer environment for everyone.
         </motion.p>
 
-        {/* Rating */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex items-center gap-4"
-        >
-          <div className="flex items-center gap-6">
-            <div>
-              <p className="text-sm font-medium text-gray-400">Loved the performance</p>
-              <p className="text-sm font-bold text-gray-400">100% Satisfied</p>
-            </div>
-            <div className="h-8 w-px bg-gray-300"></div>
-            <div className="flex items-center gap-1">
-              <Star className="w-4 h-4 fill-black" />
-              <span className="font-bold text-lg text-black">4.9</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-wrap items-center gap-4"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
         >
           <button
             onClick={onStartCall}
-            className="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors flex items-center gap-2 text-sm"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-[0_0_20px_-5px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_-5px_rgba(37,99,235,0.6)]"
           >
-            Try it Now
+            Report here 
           </button>
-          <button className="text-black px-5 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm">
-            Our Pricing
-            <ArrowRight className="w-4 h-4" />
-          </button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex items-center gap-2 text-sm text-gray-500 pt-4"
+        >
+          <Sparkles className="w-4 h-4 text-blue-500" />
+          <span>Beta release date June 30th, 2023</span>
         </motion.div>
       </div>
 
-      {/* Right Content - Image with Cards */}
-      <div className="flex-1 relative w-full lg:w-auto h-full flex items-center justify-center">
+      {/* Right Content - Abstract Visuals */}
+      <div className="flex-1 w-full h-[500px] relative flex items-center justify-center mt-12 lg:mt-0">
+        {/* Glowing Orb Effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-600/20 rounded-full blur-[100px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-purple-600/20 rounded-full blur-[80px] mix-blend-screen"></div>
+
+        {/* Abstract Cube/Structure Representation */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative w-full max-w-md"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative w-full max-w-md aspect-square"
         >
-          {/* Main Image Container */}
-          <div className="relative w-full aspect-4/5 rounded-3xl overflow-hidden bg-linear-to-br from-orange-400 to-orange-500 max-h-[70vh]">
-            <Image
-              src="/sales.jpg"
-              alt="Sales representative"
-              fill
-              className="object-cover"
-              priority
-            />
+          {/* Wireframe Box Container */}
+          <div className="absolute inset-0 border border-white/5 rounded-3xl transform rotate-6 scale-90"></div>
+          <div className="absolute inset-0 border border-white/5 rounded-3xl transform -rotate-3 scale-95"></div>
+          
+          {/* Main Glowing Element */}
+          <div className="absolute inset-10 bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
+            {/* Inner Glow */}
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/10 to-transparent"></div>
             
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg"
-              >
-                <Play className="w-5 h-5 lg:w-6 lg:h-6 fill-black ml-1" />
-              </motion.div>
+            {/* Sphere */}
+            <div className="relative w-32 h-32 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 shadow-[0_0_50px_rgba(59,130,246,0.5)] flex items-center justify-center">
+               <div className="absolute inset-0 bg-white/20 rounded-full blur-md"></div>
+               <div className="w-full h-full rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
+
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-10 right-10 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_white]"
+            />
+            <motion.div 
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute bottom-20 left-10 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_#60a5fa]"
+            />
           </div>
 
-          {/* Floating Cards */}
-          {/* Top Left - Questions */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute top-2 left-2 lg:top-4 lg:left-4 space-y-2"
-          >
-            <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2">
-              <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4 text-orange-500" />
-              <span className="text-xs lg:text-sm font-medium text-black">Want to know about investment?</span>
-            </div>
-            <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2 mr-7 lg:mr-8">
-              <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4 text-blue-500" />
-              <span className="text-xs lg:text-sm font-medium text-black">Like to collaborate?</span>
-            </div>
-          </motion.div>
-
-          {/* Top Right - Sales Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="absolute -top-2 -right-2 lg:-top-4 lg:-right-4 bg-white-900/90 border backdrop-blur-sm p-3 lg:p-4 rounded-2xl shadow-xl"
-          >
-            <p className="text-[10px] lg:text-xs text-white/80 mb-0.5 lg:mb-1">UP TO</p>
-            <p className="text-3xl lg:text-4xl font-bold text-white mb-0.5 lg:mb-1">60%</p>
-            <p className="text-[10px] lg:text-xs text-white">More sales this week</p>
-          </motion.div>
+          {/* Decorative Lines */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30" viewBox="0 0 400 400">
+            <path d="M0,200 Q100,100 200,200 T400,200" fill="none" stroke="url(#grad1)" strokeWidth="1" />
+            <path d="M0,250 Q150,150 250,250 T400,250" fill="none" stroke="url(#grad1)" strokeWidth="1" />
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="transparent" />
+                <stop offset="50%" stopColor="rgba(255,255,255,0.5)" />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+          </svg>
         </motion.div>
       </div>
     </div>
