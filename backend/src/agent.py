@@ -23,39 +23,38 @@ import re
 from datetime import datetime
 import sqlite3
 
-conn = sqlite3.connect('users.db')  # Creates a new database file if it doesn’t exist
+# Initialize the SQLite database using a context manager, enable WAL and set a busy timeout
+conn = sqlite3.connect("users.db")
 cursor = conn.cursor()
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS users (
-  userName TEXT,
-  securityIdentifier TEXT,
-  cardEnding TEXT,
-  transactionName TEXT,
-  transactionAmount TEXT,
-  transactionLocation TEXT,
-  transactionSource TEXT,
-  transactionTime TEXT,
-  securityQuestion TEXT,
-  securityAnswer TEXT,
-  status TEXT,
-  note TEXT
-)
-""")
-#cursor.execute("""
-#    INSERT INTO users (userName, securityIdentifier, cardEnding, transactionName, transactionAmount, transactionLocation, transactionSource, transactionTime, securityQuestion, securityAnswer, status, note)
-#    VALUES ("Mohak Gupta", "ID12345", "6789", "Alibaba purchase", "$150.00", "New York, NY", "Online", "2024-06-15 14:30:00", "What is your pet's name?", "Fluffy", "pending_review", "First time transaction")
-#""")
+# cursor.execute("""
+# CREATE TABLE IF NOT EXISTS users (
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     userName TEXT,
+#     securityIdentifier TEXT,
+#     cardEnding TEXT,
+#     transactionName TEXT,
+#     transactionAmount TEXT,
+#     transactionLocation TEXT,
+#     transactionSource TEXT,
+#     transactionTime TEXT,
+#     securityQuestion TEXT,
+#     securityAnswer TEXT,
+#     status TEXT,
+#     note TEXT
+# )
+# """)
+# cursor.execute("""
+#            insert into users (userName, securityIdentifier, cardEnding, transactionName, transactionAmount, transactionLocation, transactionSource, transactionTime, securityQuestion, securityAnswer, status, note)
+#            values ("mohak gupta", "id12345", "6789", "alibaba purchase", "$150.00", "new york, ny", "online", "2024-06-15 14:30:00", "what is your pet's name?", "fluffy", "pending_review", "first time transaction")
+#         """)
 
-# cursor.execute("DELETE FROM users WHERE userName = 'Mohak Gupta'")
+try:
+    cursor.execute("DELETE FROM users WHERE id = ?", (2,))
+except sqlite3.OperationalError as e:
+    logger.warning("Could not delete initial row: %s", e)
 
-# cursor.execute("SELECT * FROM users")
-""" rows = cursor.fetchall()
-for row in rows:
-    print(row)
- """
 conn.commit()
 conn.close()
-
 
 logger = logging.getLogger("agent")
 
@@ -63,11 +62,14 @@ load_dotenv(".env")
 
 
 class Assistant(Agent):
-    def __init__(self, userName: str = None):
+    def __init__(self, userName: str = None, securityQuestion: str = None, securityAnswer: str = None):
         self.userName = userName
+        self.securityQuestion = securityQuestion
+        self.securityAnswer = securityAnswer
         super().__init__(instructions=f"""
- You are a fraud detection assistant from NovaCox bank. If someone has any unusual transaction, you need to verify it with them by asking security questions.
+ You are a fraud detection assistant from NovaCox bank. You'll call the user when they have any unusual transaction, you need to verify it with them by asking their security question which is {self.securityQuestion}.
     DO NOT ask for any personal information like full card number, CVV, expiry date, etc.
+    Before proceeding, confirm the user's identity using their userName: {self.userName}. Only proceed if the user is the right person. Otherwise, terminate the call.
     You have access to a database of users and their recent transactions. Use this information to assist in verifying transactions.
     The database has the following fields:
     - userName
@@ -91,6 +93,10 @@ class Assistant(Agent):
         """
         Looks up the security question answer in the database and verifies by asking the user that he's the right person. And the
         user did the transaction or not. 
+        args:
+            security_answer (str): The answer provided by the user.
+        returns:
+            str: Verification result message.
         """
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
@@ -139,7 +145,9 @@ def prewarm(proc: JobProcess):
     cursor.execute("SELECT * FROM users WHERE status = 'pending_review'")
     rows = cursor.fetchall()
     print(rows[0][0])
-    proc.userdata["userName"] = rows[0][0]
+    proc.userdata["userName"] = rows[0][1]
+    proc.userdata["securityQuestion"] = rows[0][9]
+    proc.userdata["securityAnswer"] = rows[0][10]
 
 
 async def entrypoint(ctx: JobContext):
@@ -211,7 +219,7 @@ async def entrypoint(ctx: JobContext):
 
     # Start the session, which initializes the voice pipeline and warms up the models
     await session.start(
-        agent=Assistant(userName=ctx.proc.userdata.get("userName", "Unknown")),
+        agent=Assistant(userName=ctx.proc.userdata.get("userName", "Unknown"), securityQuestion=ctx.proc.userdata.get("securityQuestion", "Unknown"), securityAnswer=ctx.proc.userdata.get("securityAnswer", "Unknown")),
         room=ctx.room,
         room_input_options=RoomInputOptions(
             # For telephony applications, use `BVCTelephony` for best results
@@ -219,7 +227,7 @@ async def entrypoint(ctx: JobContext):
         ),
     )
     session.generate_reply(
-        instructions=f"Confirm the user's identity: {ctx.proc.userdata.get('userName', 'Unknown')} and only proceed if the user is the right person. Otherwise terminate the call."
+        instructions=f"Greet the user with something like this: Hello, this is Sarah from the Fraud Prevention Department at NovaCox Bank. Am I speaking with {ctx.proc.userdata.get('userName', 'Unknown')}?"
     )
 
     # Join the room and connect to the user
