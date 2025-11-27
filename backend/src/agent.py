@@ -48,10 +48,10 @@ cursor = conn.cursor()
 #            values ("mohak gupta", "id12345", "6789", "alibaba purchase", "$150.00", "new york, ny", "online", "2024-06-15 14:30:00", "what is your pet's name?", "fluffy", "pending_review", "first time transaction")
 #         """)
 
-try:
-    cursor.execute("DELETE FROM users WHERE id = ?", (2,))
-except sqlite3.OperationalError as e:
-    logger.warning("Could not delete initial row: %s", e)
+# try:
+#     cursor.execute("DELETE FROM users WHERE id = ?", (2,))
+# except sqlite3.OperationalError as e:
+#     logger.warning("Could not delete initial row: %s", e)
 
 conn.commit()
 conn.close()
@@ -67,32 +67,27 @@ class Assistant(Agent):
         self.securityQuestion = securityQuestion
         self.securityAnswer = securityAnswer
         super().__init__(instructions=f"""
- You are a fraud detection assistant from NovaCox bank. You'll call the user when they have any unusual transaction, you need to verify it with them by asking their security question which is {self.securityQuestion}.
+ You are a fraud detection assistant from NovaCox bank. You'll call the user when they have any unusual transaction, you need to verify it with them.
+    
+    IMPORTANT WORKFLOW:
+    1. First, confirm the user's identity using their userName: {self.userName}
+    2. Ask the security question: {self.securityQuestion}
+    3. Use security_question_lookup to verify their answer
+    4. ONLY IF identity is verified, ask: "Did you make this transaction?" or "Do you recognize this charge?"
+    5. Use mark_transaction_status with TRUE if they say YES/they made it, FALSE if they say NO/didn't make it
+    
     DO NOT ask for any personal information like full card number, CVV, expiry date, etc.
-    Before proceeding, confirm the user's identity using their userName: {self.userName}. Only proceed if the user is the right person. Otherwise, terminate the call.
-    You have access to a database of users and their recent transactions. Use this information to assist in verifying transactions.
-    The database has the following fields:
-    - userName
-    - securityIdentifier
-    - cardEnding
-    - transactionName
-    - transactionAmount     
-    - transactionLocation
-    - transactionSource
-    - transactionTime
-    - securityQuestion
-    - securityAnswer
-    - status
-    - note
-    When a user mentions a transaction, look it up in the database using the transactionName, transactionAmount, and cardEnding.
-    If the transaction is found and marked as "pending_review", ask the user the corresponding security. If the user answers correctly, mark the transaction as "verified". If the answer is incorrect, mark it as "fraudulent".
+    DO NOT mark the transaction as safe just because they answered the security question correctly.
+    
+    If the user says they did NOT make the transaction, it is FRAUD - mark user_made_transaction as False.
+    If the user says they DID make the transaction, it is SAFE - mark user_made_transaction as True.
         """)
 
     @function_tool
     async def security_question_lookup(self, security_answer: str) -> str:
         """
-        Looks up the security question answer in the database and verifies by asking the user that he's the right person. And the
-        user did the transaction or not. 
+        Looks up the security question answer in the database and verifies the user's identity.
+        This only verifies identity - you must still ask if they made the transaction.
         args:
             security_answer (str): The answer provided by the user.
         returns:
@@ -102,34 +97,37 @@ class Assistant(Agent):
         cursor = conn.cursor()
         cursor.execute("SELECT securityAnswer FROM users WHERE userName = ?", (self.userName,))
         row = cursor.fetchone()
+        conn.close()
         if row and row[0].lower() == security_answer.lower():
-            cursor.execute("UPDATE users SET status = 'confirmed_safe' WHERE userName = ?", (self.userName,))
-            conn.commit()
-            conn.close()
-            return "The transaction has been verified successfully."
+            return "Security answer is correct. Identity verified. Now ask the user if they made this transaction."
         else:
-            cursor.execute("UPDATE users SET status = 'verification_failed' WHERE userName = ?", (self.userName,))
-            conn.commit()
-            conn.close()
-            return "The answer is incorrect. The transaction has been marked as fraudulent."
+            return "The answer is incorrect. Cannot verify identity. The transaction should be marked as fraudulent."
 
     @function_tool
-    async def confirm_fraud(self, confirmation: str) -> str:
+    async def mark_transaction_status(self, user_made_transaction: bool) -> str:
         """
-        Confirms if the user wants to mark the transaction as fraudulent.
+        Marks the transaction status based on whether the user confirms they made the transaction.
+        Call this ONLY after verifying the user's identity with the security question.
+        
+        Args:
+            user_made_transaction (bool): True if user confirms they made the transaction, False if they didn't
+        
+        Returns:
+            str: Status message about the transaction
         """
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
-        if confirmation.lower() in ["yes", "y", "confirm", "mark as fraudulent"]:
-            cursor.execute("UPDATE users SET status = 'confirmed_fraud' WHERE userName = ?", (self.userName,))
-            conn.commit()
-            conn.close()
-            return "The transaction has been marked as fraudulent."
-        else:
+        
+        if user_made_transaction:
             cursor.execute("UPDATE users SET status = 'confirmed_safe' WHERE userName = ?", (self.userName,))
             conn.commit()
             conn.close()
-            return "The transaction has been confirmed as safe."
+            return "The transaction has been confirmed as safe. Thank you for verifying."
+        else:
+            cursor.execute("UPDATE users SET status = 'confirmed_fraud' WHERE userName = ?", (self.userName,))
+            conn.commit()
+            conn.close()
+            return "The transaction has been marked as fraudulent. We will take immediate action to secure your account."
 
     
 
