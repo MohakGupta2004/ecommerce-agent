@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Sparkles } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface HeroProps {
   onStartCall?: () => void;
@@ -8,113 +8,185 @@ interface HeroProps {
 
 export default function Hero({ onStartCall }: HeroProps) {
   return (
-    <div className="relative min-h-[calc(100vh-100px)] flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto px-6 py-12 lg:py-0">
-      
-      {/* Left Content */}
-      <div className="flex-1 z-10 space-y-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{ fontFamily: '"Orbitron", "Roboto Mono", monospace', letterSpacing: '0.06em' }}
-        >
-          <h1 className="text-5xl lg:text-7xl font-semibold text-white leading-[1.1] tracking-tight">
-            <span className="whitespace-nowrap">Report Your Fraud</span>
-            <br />
-            <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
-              Against Fraudsters
-            </span>
-          </h1>
-        </motion.div>
+    <div className="relative min-h-screen pt-52 pb-12 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-rose-200/30 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl"></div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-400 text-lg max-w-xl leading-relaxed font-mono"
-          style={{ fontFamily: '"Orbitron", "Roboto Mono", monospace', letterSpacing: '0.02em' }}
-        >
-          Report fraudulent activities with ease using our intuitive platform. Help us combat fraud and create a safer environment for everyone.
-        </motion.p>
-
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center z-10">
+        {/* Left Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="space-y-8 z-10"
         >
-          <button
-            onClick={onStartCall}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-[0_0_20px_-5px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_-5px_rgba(37,99,235,0.6)]"
+          <h1 
+            className="text-6xl lg:text-7xl font-normal text-gray-900 leading-tight"
+            style={{ fontFamily: '"Playfair Display", serif' }}
           >
-            Report here 
-          </button>
-        </motion.div>
+            Enjoy healthy and
+            <br />
+            delicious food.
+          </h1>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex items-center gap-2 text-sm text-gray-500 pt-4"
-        >
-          <Sparkles className="w-4 h-4 text-blue-500" />
-          <span>Beta release date June 30th, 2023</span>
-        </motion.div>
-      </div>
+          <p 
+            className="text-gray-600 text-base leading-relaxed max-w-md"
+            style={{ fontFamily: '"Inter", sans-serif' }}
+          >
+            Rice balls here are just like homemade. The texture is perfect. Design by Fluttertop and they have that comforting, home-cooked taste. Love them!
+          </p>
 
-      {/* Right Content - Abstract Visuals */}
-      <div className="flex-1 w-full h-[500px] relative flex items-center justify-center mt-12 lg:mt-0">
-        {/* Glowing Orb Effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-600/20 rounded-full blur-[100px]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-purple-600/20 rounded-full blur-[80px] mix-blend-screen"></div>
-
-        {/* Abstract Cube/Structure Representation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full max-w-md aspect-square"
-        >
-          {/* Wireframe Box Container */}
-          <div className="absolute inset-0 border border-white/5 rounded-3xl transform rotate-6 scale-90"></div>
-          <div className="absolute inset-0 border border-white/5 rounded-3xl transform -rotate-3 scale-95"></div>
-          
-          {/* Main Glowing Element */}
-          <div className="absolute inset-10 bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden">
-            {/* Inner Glow */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/10 to-transparent"></div>
-            
-            {/* Sphere */}
-            <div className="relative w-32 h-32 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 shadow-[0_0_50px_rgba(59,130,246,0.5)] flex items-center justify-center">
-               <div className="absolute inset-0 bg-white/20 rounded-full blur-md"></div>
-               <div className="w-full h-full rounded-full bg-gradient-to-t from-black/20 to-transparent"></div>
+          {/* Customer Review */}
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+              <div className="w-full h-full bg-gradient-to-br from-orange-400 to-rose-400"></div>
             </div>
-
-            {/* Floating Elements */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_white]"
-            />
-            <motion.div 
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-20 left-10 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_#60a5fa]"
-            />
+            <div>
+              <p className="font-medium text-gray-900" style={{ fontFamily: '"Inter", sans-serif' }}>
+                John
+              </p>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Decorative Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30" viewBox="0 0 400 400">
-            <path d="M0,200 Q100,100 200,200 T400,200" fill="none" stroke="url(#grad1)" strokeWidth="1" />
-            <path d="M0,250 Q150,150 250,250 T400,250" fill="none" stroke="url(#grad1)" strokeWidth="1" />
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="transparent" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.5)" />
-                <stop offset="100%" stopColor="transparent" />
-              </linearGradient>
-            </defs>
-          </svg>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 pt-4">
+            <button
+              onClick={onStartCall}
+              className="px-8 py-3.5 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
+              style={{ fontFamily: '"Inter", sans-serif' }}
+            >
+              Order now
+            </button>
+            <button
+              className="px-8 py-3.5 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-50 transition-all border border-gray-200 shadow-sm"
+              style={{ fontFamily: '"Inter", sans-serif' }}
+            >
+              Reservation
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Right Content - Custom Sushi Illustration */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="relative flex items-center justify-center min-h-[500px]"
+        >
+          {/* Rating Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="absolute top-8 right-8 rounded-2xl px-4 py-3 shadow-xl z-20 backdrop-blur-sm bg-white/90"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600 font-medium" style={{ fontFamily: '"Inter", sans-serif' }}>
+                3.2k+ Rating
+              </span>
+              <div className="flex items-center gap-1">
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <span className="font-bold text-gray-900" style={{ fontFamily: '"Inter", sans-serif' }}>
+                  4.7
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Social Labels */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 text-xs font-medium text-gray-500 z-20">
+            <span className="writing-mode-vertical rotate-180" style={{ writingMode: 'vertical-rl' }}>
+              INSTAGRAM
+            </span>
+            <span className="writing-mode-vertical rotate-180" style={{ writingMode: 'vertical-rl' }}>
+              WHATSAPP
+            </span>
+            <span className="writing-mode-vertical rotate-180" style={{ writingMode: 'vertical-rl' }}>
+              FACEBOOK
+            </span>
+          </div>
+
+          {/* Custom Sushi Illustration */}
+          <div className="relative w-full max-w-lg aspect-square">
+            <motion.div
+              animate={{ rotate: [0, 2, 0, -2, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full h-full"
+            >
+              {/* Sushi Roll */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64">
+                {/* Main Sushi Body */}
+                <div className="relative w-full h-full rounded-full bg-white shadow-2xl overflow-hidden">
+                  {/* Rice base */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100"></div>
+                  
+                  {/* Seaweed wrap */}
+                  <div className="absolute inset-0 border-[16px] border-gray-800 rounded-full"></div>
+                  
+                  {/* Rice texture dots */}
+                  {[...Array(40)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-white/60 rounded-full"
+                      style={{
+                        top: `${20 + Math.random() * 60}%`,
+                        left: `${20 + Math.random() * 60}%`,
+                      }}
+                    />
+                  ))}
+                  
+                  {/* Salmon/Fish - top left */}
+                  <div className="absolute top-16 left-12 w-16 h-12 bg-gradient-to-br from-orange-400 to-rose-500 rounded-lg transform -rotate-12 shadow-lg"></div>
+                  
+                  {/* Avocado - bottom right */}
+                  <div className="absolute bottom-20 right-14 w-14 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg"></div>
+                  
+                  {/* Cucumber - top right */}
+                  <div className="absolute top-20 right-16 w-10 h-10 bg-gradient-to-br from-green-300 to-green-500 rounded-full shadow-md"></div>
+                  
+                  {/* Orange roe/tobiko details */}
+                  <div className="absolute top-24 left-20 w-3 h-3 bg-orange-500 rounded-full shadow-sm"></div>
+                  <div className="absolute top-28 left-24 w-2 h-2 bg-orange-600 rounded-full"></div>
+                  <div className="absolute bottom-24 left-24 w-2.5 h-2.5 bg-red-500 rounded-full shadow-sm"></div>
+                </div>
+              </div>
+
+              {/* Chopsticks */}
+              <motion.div
+                animate={{ rotate: [0, -2, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute top-0 right-0 w-96 h-96"
+              >
+                {/* Chopstick 1 */}
+                <div className="absolute top-1/4 right-1/4 w-[280px] h-2 bg-gradient-to-r from-amber-800 to-amber-600 rounded-full transform rotate-[25deg] shadow-xl origin-right">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </div>
+                
+                {/* Chopstick 2 */}
+                <div className="absolute top-1/3 right-1/4 w-[280px] h-2 bg-gradient-to-r from-amber-900 to-amber-700 rounded-full transform rotate-[35deg] shadow-xl origin-right">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </div>
+              </motion.div>
+
+              {/* Floating garnish elements */}
+              <motion.div
+                animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-12 left-12 w-8 h-8 bg-gradient-to-br from-red-400 to-red-600 rounded-sm transform rotate-45 shadow-lg"
+              />
+              <motion.div
+                animate={{ y: [0, 10, 0], x: [0, 5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-16 left-20 w-6 h-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-md"
+              />
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>

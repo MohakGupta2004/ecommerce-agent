@@ -6,7 +6,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.1 0 0); /* Dark background */
+  --background: oklch(100% 0.00011 271.152); /* Dark background */
   --foreground: oklch(0.985 0 0); /* Light text */
   --card: oklch(0.15 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -40,7 +40,7 @@
 }
 
 .dark {
-  --background: oklch(0.05 0 0);
+  --background: oklch(98.511% 0.00011 271.152);
   --foreground: oklch(0.985 0 0);
   --font-roboto: 'Roboto', ui-sans-serif;
   --card: oklch(0.205 0 0);
@@ -125,7 +125,7 @@
   }
 }
 
-@layer utils {
+/* @layer utils {
   .animate-text-shimmer {
     animation-delay: 0.5s;
     animation-duration: 3s;
@@ -157,4 +157,4 @@
       background-position: 250% 0;
     }
   }
-}
+} */

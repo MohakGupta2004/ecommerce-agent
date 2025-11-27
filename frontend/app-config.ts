@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'NovaCox',
-  pageTitle: 'NovaCox Fraud Detection Agent',
-  pageDescription: 'Connect with our AI-powered fraud detection assistant to verify unusual transactions quickly and securely.',
+  companyName: 'Crave',
+  pageTitle: 'Crave Food Ordering Agent',
+  pageDescription: 'Connect with our AI-powered food ordering assistant to enjoy healthy and delicious meals quickly and easily.',
 
   supportsChatInput: true,
   supportsVideoInput: true,

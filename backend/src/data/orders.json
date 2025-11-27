@@ -1,0 +1,25 @@
+[
+    {
+        "customer": "Mohak Gupta",
+        "items": [
+            {
+                "name": "Bread",
+                "price": 50
+            },
+            {
+                "name": "Peanut Butter Sandwich",
+                "price": 85
+            },
+            {
+                "name": "Masala Dosa",
+                "price": 160
+            },
+            {
+                "name": "Margherita Pizza",
+                "price": 220
+            }
+        ],
+        "total": 515,
+        "timestamp": "2025-11-28T01:10:42.192203"
+    }
+]

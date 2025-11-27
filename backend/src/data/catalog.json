@@ -1,0 +1,33 @@
+
+{
+  "foods": [
+    { "name": "Margherita Pizza", "price": 220 },
+    { "name": "Veg Burger", "price": 120 },
+    { "name": "French Fries", "price": 90 },
+    { "name": "Masala Dosa", "price": 160 },
+    { "name": "Paneer Momos", "price": 110 },
+    { "name": "Chicken Roll", "price": 130 },
+    { "name": "Cold Coffee", "price": 95 },
+    { "name": "Peanut Butter Sandwich", "price": 85 }
+  ],
+
+  "groceries": [
+    { "name": "Bread", "price": 50 },
+    { "name": "Peanut Butter", "price": 180 },
+    { "name": "Milk (1L)", "price": 70 },
+    { "name": "Coffee Powder", "price": 140 },
+    { "name": "Sugar", "price": 45 },
+    { "name": "Salt", "price": 20 },
+    { "name": "Wheat Flour (Atta)", "price": 220 },
+    { "name": "Potatoes (1kg)", "price": 45 },
+    { "name": "Oil (1L)", "price": 130 },
+    { "name": "Maggi Packet", "price": 15 }
+  ],
+
+  "recipes": {
+    "peanut butter sandwich": ["Bread", "Peanut Butter"],
+    "cold coffee": ["Milk (1L)", "Coffee Powder", "Sugar"],
+    "aloo paratha": ["Wheat Flour (Atta)", "Potatoes (1kg)", "Salt", "Oil (1L)"],
+    "maggi": ["Maggi Packet", "Water", "Salt"]
+  }
+}

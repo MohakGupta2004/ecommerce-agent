@@ -1,4 +1,4 @@
-import { Public_Sans, Radley } from 'next/font/google';
+import { Public_Sans, Radley, Playfair_Display, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import { headers } from 'next/headers';
 import { ApplyThemeScript, ThemeToggle } from '@/components/app/theme-toggle';
@@ -7,6 +7,17 @@ import '@/styles/globals.css';
 
 const publicSans = Public_Sans({
   variable: '--font-public-sans',
+  subsets: ['latin'],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: '--font-playfair',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
+
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
 });
 
@@ -54,6 +65,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       className={cn(
         publicSans.variable,
         commitMono.variable,
+        playfairDisplay.variable,
+        inter.variable,
         'scroll-smooth font-sans antialiased'
       )}
     >

@@ -1,55 +1,69 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Shield } from "lucide-react";
+import { Search, User, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const navlinks = [
     { name: "Home", href: "/" },
+    { name: "Menu", href: "/menu" },
     { name: "About us", href: "/about" },
-    { name: "User-guide", href: "/guide" },
-    { name: "Pricing", href: "/pricing" },
+    { name: "Reservation", href: "/reservation" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto relative z-50"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
     >
-      {/* Logo */}
-      <div className="flex items-center gap-2">
-        <div className="relative">
-          <div className="absolute inset-0 bg-blue-500 blur-lg opacity-50"></div>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-lg">🍜</span>
+          </div>
+          <span className="font-semibold text-xl text-gray-900" style={{ fontFamily: '"Inter", sans-serif' }}>
+            Crave
+          </span>
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navlinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-sm font-medium transition-colors ${
+                link.name === "Home" 
+                  ? "text-orange-500" 
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+              style={{ fontFamily: '"Inter", sans-serif' }}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
-        <span className="text-white font-medium text-lg tracking-wide">NovaCox</span>
-      </div>
 
-      {/* Center Links */}
-      <div className="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 gap-8">
-        {navlinks.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-            className="text-sm text-gray-300 hover:text-white transition-colors font-light"
-          >
-            {link.name}
-          </Link>
-        ))}
-      </div>
-
-      {/* Right Actions */}
-      <div className="flex items-center gap-6">
-        <Link href="/signup" className="text-sm text-gray-300 hover:text-white transition-colors">
-          Sign up
-        </Link>
-        <Link
-          href="/login"
-          className="text-sm text-white border border-white/20 bg-white/5 px-5 py-2 rounded-full hover:bg-white/10 transition-colors"
-        >
-          Login
-        </Link>
+        {/* Right Actions */}
+        <div className="flex items-center gap-4">
+          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+            <Search className="w-5 h-5 text-gray-600" />
+          </button>
+          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+            <User className="w-5 h-5 text-gray-600" />
+          </button>
+          <button className="relative p-2 bg-orange-500 rounded-full hover:bg-orange-600 transition-colors">
+            <ShoppingBag className="w-5 h-5 text-white" />
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 rounded-full text-white text-xs flex items-center justify-center font-medium">
+              0
+            </span>
+          </button>
+        </div>
       </div>
     </motion.nav>
   );
