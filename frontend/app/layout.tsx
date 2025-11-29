@@ -1,4 +1,4 @@
-import { Public_Sans, Radley, Playfair_Display, Inter } from 'next/font/google';
+import { Public_Sans, Radley, Playfair_Display, Inter, DM_Serif_Text } from 'next/font/google';
 import localFont from 'next/font/local';
 import { headers } from 'next/headers';
 import { ApplyThemeScript, ThemeToggle } from '@/components/app/theme-toggle';
@@ -19,6 +19,12 @@ const playfairDisplay = Playfair_Display({
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+});
+
+const dmSerifText = DM_Serif_Text({
+  variable: '--font-dm-serif',
+  subsets: ['latin'],
+  weight: ['400'],
 });
 
 const commitMono = localFont({
@@ -67,6 +73,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         commitMono.variable,
         playfairDisplay.variable,
         inter.variable,
+        dmSerifText.variable,
         'scroll-smooth font-sans antialiased'
       )}
     >

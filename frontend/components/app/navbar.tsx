@@ -6,28 +6,29 @@ import Image from "next/image";
 
 export default function Navbar() {
   const navlinks = [
-    { name: "Home", href: "/" },
-    { name: "Menu", href: "/menu" },
-    { name: "About us", href: "/about" },
-    { name: "Reservation", href: "/reservation" },
-    { name: "Blog", href: "/blog" },
+    { name: "Products", href: "/", hasDropdown: true },
+    { name: "Customer Stories", href: "/stories" },
+    { name: "Resources", href: "/resources" },
+    { name: "Pricing", href: "/pricing" },
   ];
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-lg">🍜</span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2L3 7V13L10 18L17 13V7L10 2Z" fill="white" />
+            </svg>
           </div>
-          <span className="font-semibold text-xl text-gray-900" style={{ fontFamily: '"Inter", sans-serif' }}>
-            Crave
+          <span className="font-semibold text-lg text-gray-900">
+            ACP
           </span>
         </Link>
 
@@ -37,31 +38,28 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                link.name === "Home" 
-                  ? "text-orange-500" 
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-              style={{ fontFamily: '"Inter", sans-serif' }}
+              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1"
             >
               {link.name}
+              {link.hasDropdown && (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <path d="M6 8L3 5h6L6 8z" />
+                </svg>
+              )}
             </Link>
           ))}
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-4">
-          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-            <Search className="w-5 h-5 text-gray-600" />
-          </button>
-          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-            <User className="w-5 h-5 text-gray-600" />
-          </button>
-          <button className="relative p-2 bg-orange-500 rounded-full hover:bg-orange-600 transition-colors">
-            <ShoppingBag className="w-5 h-5 text-white" />
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 rounded-full text-white text-xs flex items-center justify-center font-medium">
-              0
-            </span>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/demo"
+            className="hidden sm:block text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors px-4 py-2"
+          >
+            Book A Demo
+          </Link>
+          <button className="text-sm font-medium text-white bg-black hover:bg-gray-800 transition-all px-6 py-2.5 rounded-full shadow-sm hover:shadow-md">
+            Get Started
           </button>
         </div>
       </div>
