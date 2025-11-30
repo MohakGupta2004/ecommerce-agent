@@ -1,25 +1,49 @@
 [
     {
         "customer": "Mohak Gupta",
-        "items": [
+        "orders": [
             {
-                "name": "Bread",
-                "price": 50
+                "order_id": "ORD_20251130113257",
+                "items": [
+                    {
+                        "product_id": "prod_009",
+                        "name": "Bluetooth Headphones",
+                        "price": 1999,
+                        "quantity": 1,
+                        "item_total": 1999
+                    }
+                ],
+                "total": 1999,
+                "timestamp": "2025-11-30T11:32:57.510137"
             },
             {
-                "name": "Peanut Butter Sandwich",
-                "price": 85
+                "order_id": "ORD_20251130113300",
+                "items": [
+                    {
+                        "product_id": "prod_009",
+                        "name": "Bluetooth Headphones",
+                        "price": 1999,
+                        "quantity": 1,
+                        "item_total": 1999
+                    }
+                ],
+                "total": 1999,
+                "timestamp": "2025-11-30T11:33:00.826060"
             },
             {
-                "name": "Masala Dosa",
-                "price": 160
-            },
-            {
-                "name": "Margherita Pizza",
-                "price": 220
+                "order_id": "ORD_20251130113448",
+                "items": [
+                    {
+                        "product_id": "prod_005",
+                        "name": "Wireless Mouse",
+                        "price": 899,
+                        "quantity": 1,
+                        "item_total": 899
+                    }
+                ],
+                "total": 899,
+                "timestamp": "2025-11-30T11:34:48.336237"
             }
-        ],
-        "total": 515,
-        "timestamp": "2025-11-28T01:10:42.192203"
+        ]
     }
 ]

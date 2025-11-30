@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Crave',
-  pageTitle: 'Crave Food Ordering Agent',
-  pageDescription: 'Connect with our AI-powered food ordering assistant to enjoy healthy and delicious meals quickly and easily.',
+  companyName: 'ACP',
+  pageTitle: 'ACP Ecommerce Agent',
+  pageDescription: 'Connect with our AI-powered ecommerce assistant to enjoy healthy and delicious meals quickly and easily.',
 
   supportsChatInput: true,
   supportsVideoInput: true,
